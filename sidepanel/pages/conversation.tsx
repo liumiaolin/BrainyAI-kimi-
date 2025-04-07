@@ -983,25 +983,8 @@ function ConversationContent() {
     );
 
     const currentModelView = () => {
-        return <div onClick={() => showModelSelector(true)}
-            className={'cursor-pointer rounded-[40px] bg-[#F3F4F9] px-3 text-[12px] h-[25px] flex justify-center items-center'}>
-            {
-                currentBots.length &&
-                currentBots.map(item => {
-                    return (
-                        <div key={item.botName} className={'flex justify-center items-center'}>
-                            <Tooltip title={item.botName} placement={"top"}>
-                                <img className={'mr-2 w-[16px] h-[16px]'}
-                                    src={item.logoSrc} alt=''/>
-                            </Tooltip>
-
-                            {currentBots.length === 1 && `${item.botName}(${getModelLoginTag(item)})`}
-                        </div>
-                    );
-                })
-            }
-            <CaretDownOutlined className={'ml-[4px]'}/>
-        </div>;
+        // 完全返回空，不显示任何选择器UI
+        return null;
     };
 
     async function showModelSelector(isShow: boolean) {
@@ -1431,9 +1414,10 @@ function ConversationContent() {
         <div className={style.mainInputArea}>
             <div className={style.chatInputTopBar}>
                 <div className={'flex flex-row justify-start items-center'}>
-                    {modelSelectorModal}
-                    {currentModelView()}
-                    <img src={InputAttachmentIcon} alt='' className={'w-[16px] h-[16px] ms-[12px] cursor-pointer'} onClick={() => showUploadFile()}/>
+                    {/* 移除模型选择器模态框和视图 */}
+                    {/* {modelSelectorModal} */}
+                    {/* {currentModelView()} */}
+                    <img src={InputAttachmentIcon} alt='' className={'w-[16px] h-[16px] ms-[0px] cursor-pointer'} onClick={() => showUploadFile()}/>
                 </div>
             </div>
             <div
